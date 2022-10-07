@@ -1,0 +1,67 @@
+Resources ->
+			->Audio
+				-> SFX
+					-> Menu
+					-> Battle
+						-> PSI
+						-> Combos
+						-> Jingles
+					-> Text
+				-> BGM
+					-> Overworld
+					-> Battle
+			-> Data
+				-> Enemies
+			
+			-> Graphics
+				-> Party Members
+				-> NPCs
+				-> MapGraphics
+				-> EnemiesOverworld
+				-> EnemiesBattle
+			-> Scripts
+				-> EN_US
+				-> SPANISH
+				-> GERMAN
+				-> Any other language
+
+
+EnemyFile
+		
+	->	Modifiers (NBT Compound)
+		-> electricity
+		-> explosion
+		-> fire
+		-> ice
+		-> nausua
+		-> physical
+		-> poison
+		-> wet
+	
+	-> Stats (NBT Compound)
+		-> defense
+		-> guts
+		-> hp
+		-> iq
+		-> luck
+		-> level
+		-> offense
+		-> pp
+		-> speed
+		-> defense
+	
+	-> Strings
+		-> article
+		-> defeat
+		-> encounter
+		-> name
+		-> possessive
+		-> subjective
+		-> telepathy
+		-> thoughts
+	
+	Experience
+	Immunity
+	EnemyOptions
+	Sprite
+	AIName
