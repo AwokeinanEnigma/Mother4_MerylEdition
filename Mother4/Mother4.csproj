@@ -109,7 +109,7 @@
     <Compile Include="Actors\Player.cs" />
     <Compile Include="Battle\EnemyAI\HermitCanAI.cs" />
     <Compile Include="Battle\EnemyAI\FrooguAI.cs" />
-    <Compile Include="SOMETHINGSKILLS\AUXBase.cs" />
+    <Compile Include="PSISkills\AUXBase.cs" />
     <Compile Include="Battle\Actions\ActionParams.cs" />
     <Compile Include="Battle\Actions\BattleAction.cs" />
     <Compile Include="Battle\Actions\BattleEscapeAction.cs" />
@@ -200,12 +200,12 @@
     <Compile Include="Data\Settings.cs" />
     <Compile Include="Data\StatusEffectActions.cs" />
     <Compile Include="Data\UIColors.cs" />
-    <Compile Include="SOMETHINGSKILLS\Skills\Beam.cs" />
-    <Compile Include="SOMETHINGSKILLS\Skills\Telepathy.cs" />
-    <Compile Include="SOMETHINGSKILLS\Skills\LifeUp.cs" />
-    <Compile Include="SOMETHINGSKILLS\Skills\Fire.cs" />
-    <Compile Include="SOMETHINGSKILLS\Skills\Freeze.cs" />
-    <Compile Include="SOMETHINGSKILLS\Skills\Debug.cs" />
+    <Compile Include="PSISkills\Skills\Beam.cs" />
+    <Compile Include="PSISkills\Skills\Telepathy.cs" />
+    <Compile Include="PSISkills\Skills\LifeUp.cs" />
+    <Compile Include="PSISkills\Skills\Fire.cs" />
+    <Compile Include="PSISkills\Skills\Freeze.cs" />
+    <Compile Include="PSISkills\Skills\Debug.cs" />
     <Compile Include="Enemies\EnemyFile.cs" />
     <Compile Include="Enemies\EnemyData.cs" />
     <Compile Include="Enemies\EnemyImmunities.cs" />

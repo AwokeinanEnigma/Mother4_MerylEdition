@@ -1,33 +1,35 @@
-﻿using Mother4.Battle;
+﻿using SFML.Graphics;
+using SFML.System;
+using Mother4.Battle;
 using Mother4.Battle.Actions;
 using Mother4.Battle.Combatants;
 using Mother4.Battle.PsiAnimation;
 using Mother4.Battle.UI;
 using Mother4.Data;
+using Mother4.GUI.Modifiers;
 using Mother4.Psi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Carbine.Graphics;
 
 namespace Mother4.SOMETHING
 {
-    public class Fire : PSIBase
+    public class Telepathy : PSIBase
     {
-        public override int AUCost => 12; //{ get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override TargetingMode TargetMode => TargetingMode.AllEnemies;//; set => throw new NotImplementedException(); }
-        public override int[] Symbols => new int[2]; //{ get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override string QualifiedName => "PK Fire";//{ get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override string Key => "1"; //{ get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        internal override IPsi identifier => new DefensivePsi(); //{ get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public override int AUCost => 0; 
+        public override TargetingMode TargetMode => TargetingMode.Enemy;
+        public override int[] Symbols => new int[2];
+        public override string QualifiedName => "Telapathy";
+        public override string Key => "psi.telepathy"; 
+        internal override IPsi identifier => new AssistivePsi(); 
 
-        public Fire()
+        public Telepathy()
         {
-            Console.WriteLine("THE PURPOSE OF MAN IS TO BURN");
+         //   Console.WriteLine("THE PURPOSE OF MAN IS TO PERFORM TELEPATHY");
         }
-
-
 
         internal override void Initialize(PlayerCombatant combantant, BattleInterfaceController interfaceController, PlayerPsiAction action, Combatant[] targets)
         {
@@ -48,34 +50,26 @@ namespace Mother4.SOMETHING
 
         internal override void Animate(PlayerCombatant combantant, BattleInterfaceController interfaceController, PlayerPsiAction action, Combatant[] targets)
         {
-            PsiElementList animation = PsiAnimations.Get(7);
-            PsiAnimator psiAnimator = interfaceController.AddPsiAnimation(animation, combantant, targets);
-            psiAnimator.OnAnimationComplete += OnAnimationComplete;
-            action.state = PlayerPsiAction.State.WaitForUI;
-
-            void OnAnimationComplete(PsiAnimator anim)
-            {
-                anim.OnAnimationComplete -= OnAnimationComplete;
-                action.state = PlayerPsiAction.State.DamageNumbers;
-            }
+            action.state = PlayerPsiAction.State.DamageNumbers;
         }
-
         internal override void Act(Combatant[] combatants, PlayerCombatant combantant, BattleInterfaceController interfaceController, PlayerPsiAction action)
         {
             Console.WriteLine("act");
             foreach (Combatant combatant in combatants)
             {
-
-                DamageNumber damageNumber = interfaceController.AddDamageNumber(combatant, 23);
-                damageNumber.OnComplete += DamageNumber_OnComplete; ;
-                StatSet statChange = new StatSet
+                EnemyCombatant enemy = combatant as EnemyCombatant;
+                if (enemy == null)
+                {               
+                    throw new Exception("Combatant is not an enemy or somehow has null data!");
+                    return;
+                }
+                interfaceController.ShowStyledMessage($"{enemy.Enemy.GetStringQualifiedName("telepathy")}", true, Carbine.GUI.WindowBox.Style.Telepathy);
+                interfaceController.OnTextboxComplete += InterfaceController_OnTextboxComplete;
+                void InterfaceController_OnTextboxComplete()
                 {
-                    HP = -23
-                };
-                combatant.AlterStats(statChange);
-                if (combatant as EnemyCombatant != null)
-                {
-                    interfaceController.BlinkEnemy(combatant as EnemyCombatant, 3, 2);
+                    interfaceController.OnTextboxComplete -= InterfaceController_OnTextboxComplete;
+                    interfaceController.ResetTextboxStyle();
+                    action.state = PlayerPsiAction.State.Finish;
                 }
             }
             StatSet statChange2 = new StatSet
@@ -85,11 +79,10 @@ namespace Mother4.SOMETHING
             };
             combantant.AlterStats(statChange2);
             action.state = PlayerPsiAction.State.WaitForUI;
-            void DamageNumber_OnComplete(DamageNumber sender)
-            {
-                action.state = PlayerPsiAction.State.Finish;
-            }
+
         }
+
+        
 
         internal override void ScaleToLevel(PlayerCombatant combatant)
         {

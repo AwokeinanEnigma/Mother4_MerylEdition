@@ -65,14 +65,14 @@ namespace Mother4.GUI
 				NbtCompound nbtCompound = null;
 				if (nbtFile.RootTag.TryGet<NbtCompound>(Fonts.FONT_NAMES[i], out nbtCompound))
 				{
-                    Console.WriteLine($"font name is {Fonts.FONTS_FILE[i]}");
+                    //Console.WriteLine($"font name is {Fonts.FONTS_FILE[i]}");
 					int intValue = nbtCompound.Get<NbtInt>("line").IntValue;
 					uint fontSize = (uint)Math.Max(1, nbtCompound.Get<NbtInt>("size").IntValue);
 					int intValue2 = nbtCompound.Get<NbtInt>("xcomp").IntValue;
 					int intValue3 = nbtCompound.Get<NbtInt>("ycomp").IntValue;
 					string stringValue = nbtCompound.Get<NbtString>("file").StringValue;
 					Font font = Fonts.LoadFont(locale, stringValue);
-                    Console.WriteLine($"font name is {Fonts.FONTS_FILE[i]} height iz {fontSize}");
+                    //Console.WriteLine($"font name is {Fonts.FONTS_FILE[i]} height iz {fontSize}");
 					Fonts.fonts[i] = new FontData(font, fontSize, intValue, intValue2, intValue3);
 				}
 				else

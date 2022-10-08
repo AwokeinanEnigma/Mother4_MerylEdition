@@ -13,18 +13,18 @@ using System.Threading.Tasks;
 
 namespace Mother4.SOMETHING
 {
-    public class Debug : PSIBase
+    public class Beam : PSIBase
     {
-        public override int AUCost => 1; //{ get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override TargetingMode TargetMode => TargetingMode.AllEnemies;//; set => throw new NotImplementedException(); }
+        public override int AUCost => 12; //{ get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public override TargetingMode TargetMode => TargetingMode.Enemy;//; set => throw new NotImplementedException(); }
         public override int[] Symbols => new int[2]; //{ get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override string QualifiedName => "Debuggo";//{ get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public override string QualifiedName => "PK Beam";//{ get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public override string Key => "1"; //{ get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         internal override IPsi identifier => new DefensivePsi(); //{ get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        public Debug()
+        public Beam()
         {
-            Console.WriteLine("THE PURPOSE OF MAN IS TO KILL");
+        //    Console.WriteLine("THE PURPOSE OF MAN IS TO FREEZE");
         }
 
 
@@ -36,7 +36,7 @@ namespace Mother4.SOMETHING
             action.state = PlayerPsiAction.State.WaitForUI;
             interfaceController.OnTextboxComplete += OnTextboxComplete;
             interfaceController.ShowMessage(message, false);
-            interfaceController.PopCard(combantant.ID, 20);
+            interfaceController.PopCard(combantant.ID, 23);
 
             void OnTextboxComplete()
             {
@@ -48,7 +48,7 @@ namespace Mother4.SOMETHING
 
         internal override void Animate(PlayerCombatant combantant, BattleInterfaceController interfaceController, PlayerPsiAction action, Combatant[] targets)
         {
-            PsiElementList animation = PsiAnimations.Get(action.psi);
+            PsiElementList animation = PsiAnimations.Get(2);
             PsiAnimator psiAnimator = interfaceController.AddPsiAnimation(animation, combantant, targets);
             psiAnimator.OnAnimationComplete += OnAnimationComplete;
             action.state = PlayerPsiAction.State.WaitForUI;
@@ -66,11 +66,11 @@ namespace Mother4.SOMETHING
             foreach (Combatant combatant in combatants)
             {
 
-                DamageNumber damageNumber = interfaceController.AddDamageNumber(combatant, combatant.Stats.HP);
+                DamageNumber damageNumber = interfaceController.AddDamageNumber(combatant, 23);
                 damageNumber.OnComplete += DamageNumber_OnComplete; ;
                 StatSet statChange = new StatSet
                 {
-                    HP = -combatant.Stats.HP
+                    HP = -23
                 };
                 combatant.AlterStats(statChange);
                 if (combatant as EnemyCombatant != null)

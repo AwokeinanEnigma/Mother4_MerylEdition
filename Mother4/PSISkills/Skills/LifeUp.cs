@@ -26,7 +26,7 @@ namespace Mother4.SOMETHING
 
         public LifeUp()
         {
-            Console.WriteLine("THE PURPOSE OF MAN IS TO HEAL");
+       //     Console.WriteLine("THE PURPOSE OF MAN IS TO HEAL");
         }
 
 

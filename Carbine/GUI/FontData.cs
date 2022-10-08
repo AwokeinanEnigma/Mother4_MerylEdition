@@ -89,7 +89,7 @@ namespace Carbine.GUI
             this.xComp = xComp;
             this.yComp = yComp;
             this.wHeight = (int)this.font.GetGlyph(41U, this.fontSize, false).Bounds.Height;
-            Console.WriteLine($"wHeight = {wHeight}");
+           // Console.WriteLine($"wHeight = {wHeight}");
             this.alphaThreshold = 0.8f;
         }
 

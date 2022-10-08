@@ -118,7 +118,7 @@ namespace Mother4.Scenes
 			{
 				if (b == Button.A)
 				{
-					Console.WriteLine(this.enemyData[this.enemyList.SelectedIndex].QualifiedName);
+					//Console.WriteLine(this.enemyData[this.enemyList.SelectedIndex].QualifiedName);
 					this.SetEnemyInfo(this.enemyData[this.enemyList.SelectedIndex]);
 					return;
 				}

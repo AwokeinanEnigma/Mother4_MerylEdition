@@ -24,7 +24,7 @@ namespace Mother4.SOMETHING
 
         public Freeze()
         {
-            Console.WriteLine("THE PURPOSE OF MAN IS TO FREEZE");
+        //    Console.WriteLine("THE PURPOSE OF MAN IS TO FREEZE");
         }
 
 

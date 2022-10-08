@@ -30,13 +30,13 @@ namespace Mother4.Psi
 			this.assistive = this.InitializePsiList<AssistivePsi>();
 			this.other = this.InitializePsiList<OtherPsi>();
 			this.LoadOffensePsi(rootTag.Get<NbtCompound>("offense"));
-			Console.WriteLine("it loaded??");
+				//Console.WriteLine("it loaded??");
 			this.LoadDefensePsi(rootTag.Get<NbtCompound>("defense"));
-			Console.WriteLine("it loaded??");
+			//Console.WriteLine("it loaded??");
 			this.LoadAssistPsi(rootTag.Get<NbtCompound>("assist"));
-			Console.WriteLine("it loaded??");
+		//	Console.WriteLine("it loaded??");
 			this.LoadOtherPsi(rootTag.Get<NbtCompound>("other"));
-			Console.WriteLine("it loaded??");
+	//		Console.WriteLine("it loaded??");
 		}
 
 		private Dictionary<CharacterType, List<T>> InitializePsiList<T>() where T : IPsi
@@ -120,7 +120,7 @@ namespace Mother4.Psi
 					return;
 				}*/
 			}
-			Console.WriteLine("Could not load OffensePsi. Is the offense tag present?");
+		//	Console.WriteLine("Could not load OffensePsi. Is the offense tag present?");
 		}
 
 		private void LoadDefensePsi(NbtCompound defenseTag)
@@ -131,7 +131,7 @@ namespace Mother4.Psi
 				OffensePsi psi = new OffensePsi(new SOMETHING.Debug());
 				Console.WriteLine($"Offensive8 PSI: {psi.aux.QualifiedName} " + Environment.NewLine);
 			}
-			Console.WriteLine("Could not load DefensePsi. Is the defense tag present?");
+		//	Console.WriteLine("Could not load DefensePsi. Is the defense tag present?");
 		}
 
 		private void LoadAssistPsi(NbtCompound assistTag)
@@ -146,7 +146,7 @@ namespace Mother4.Psi
 				Console.WriteLine($"Assistive PSI: {psi2.aux.QualifiedName} " + Environment.NewLine);
 				this.AddPsiToCharacters<AssistivePsi>(this.assistive, psi2, new List<string>() { "travis", "meryl", "leo" });
 			}
-			Console.WriteLine("Could not load AssistPsi. Is the assist tag present?");
+		//	Console.WriteLine("Could not load AssistPsi. Is the assist tag present?");
 		}
 
 		private void LoadOtherPsi(NbtCompound otherTag)
@@ -157,7 +157,7 @@ namespace Mother4.Psi
 				OffensePsi psi = new OffensePsi(new SOMETHING.Debug());
 				Console.WriteLine($"Offensive8 PSI: {psi.aux.QualifiedName} " + Environment.NewLine);
 			}
-			Console.WriteLine("Could not load OtherPsi. Is the other tag present?");
+		//	Console.WriteLine("Could not load OtherPsi. Is the other tag present?");
 		}
 
 		private IEnumerable<string> LoadUsersAttribute(NbtCompound ability)

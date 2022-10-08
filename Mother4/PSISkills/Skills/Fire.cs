@@ -13,18 +13,18 @@ using System.Threading.Tasks;
 
 namespace Mother4.SOMETHING
 {
-    public class Beam : PSIBase
+    public class Fire : PSIBase
     {
         public override int AUCost => 12; //{ get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override TargetingMode TargetMode => TargetingMode.Enemy;//; set => throw new NotImplementedException(); }
+        public override TargetingMode TargetMode => TargetingMode.AllEnemies;//; set => throw new NotImplementedException(); }
         public override int[] Symbols => new int[2]; //{ get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override string QualifiedName => "PK Beam";//{ get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public override string QualifiedName => "PK Fire";//{ get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public override string Key => "1"; //{ get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         internal override IPsi identifier => new DefensivePsi(); //{ get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        public Beam()
+        public Fire()
         {
-            Console.WriteLine("THE PURPOSE OF MAN IS TO FREEZE");
+       //     Console.WriteLine("THE PURPOSE OF MAN IS TO BURN");
         }
 
 
@@ -48,7 +48,7 @@ namespace Mother4.SOMETHING
 
         internal override void Animate(PlayerCombatant combantant, BattleInterfaceController interfaceController, PlayerPsiAction action, Combatant[] targets)
         {
-            PsiElementList animation = PsiAnimations.Get(2);
+            PsiElementList animation = PsiAnimations.Get(7);
             PsiAnimator psiAnimator = interfaceController.AddPsiAnimation(animation, combantant, targets);
             psiAnimator.OnAnimationComplete += OnAnimationComplete;
             action.state = PlayerPsiAction.State.WaitForUI;
